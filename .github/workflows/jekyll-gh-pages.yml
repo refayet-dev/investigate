@@ -41,8 +41,11 @@ jobs:
       - name: Build
         run: node script.js
 
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: "dist/gh-pages-workflow/"
+          path: "dist/gh-pages-workflow/browser/"
+          gh-pages: true
 
   # Deployment job
   deploy:
