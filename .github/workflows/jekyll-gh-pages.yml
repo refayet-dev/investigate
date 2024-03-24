@@ -23,7 +23,12 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
 
       - name: Use Node.js 20
         uses: actions/setup-node@v2
@@ -33,11 +38,9 @@ jobs:
       - name: Install dependencies
         run: npm install
   
-      - name: Build Angular app
+      - name: Build
         run: node script.js
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
         with:
           path: "dist/gh-pages-workflow/"
 
