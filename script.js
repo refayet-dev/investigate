@@ -1,4 +1,6 @@
 const express = require('express');
+const env= require('dotenv');
+env.config();
 const app = express();
 app.use(express.json());
 
